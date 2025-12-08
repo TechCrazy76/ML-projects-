@@ -52,9 +52,8 @@ Includes preprocessing (face alignment), CNN training on the **FER-2013 dataset*
 
 ### **Deployment**
 - **Local:** Run webcam demo via:
-```bash
 python predict_cam_video_keras.py --model data/Gudi_model_100_epochs_20000_faces_keras.h5
-```bash
+
 ◦ **Colab**: Fully reproducible pipeline with setup cells for preprocessing, training, and evaluation
 
 --
