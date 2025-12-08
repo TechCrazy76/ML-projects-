@@ -1,7 +1,3 @@
-# predict_cam_video_keras.py
-# Minimal, friendly camera/video prediction using the Keras model.
-# Works locally with webcam or on a video file (recommended for Colab).
-
 import cv2
 import numpy as np
 from tensorflow.keras.models import load_model
