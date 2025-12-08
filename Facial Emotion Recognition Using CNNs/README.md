@@ -117,9 +117,8 @@ python predict_cam_video_keras.py --model data/Gudi_model_100_epochs_20000_faces
 
 ```bash
 pip install -r requirements.txt
-
 # or *individually*
-pip install numpy pandas opencv-python-headless pillow scikit-learn tensorflow keras h5py matplotlib seaborn
+!pip install -q numpy pandas opencv-python-headless pillow scikit-learn tensorflow keras h5py tflearn
 ```
 ---
 
@@ -216,9 +215,9 @@ python predict_cam_video_keras.py --model data/Gudi_model_100_epochs_20000_faces
 
 ## 📸 Sample Output
 
-![Confusion Matrix](Confusion matrix.jpeg)
+![Confusion Matrix](Confusion_matrix.jpeg)
 
-![Classification Report](Normalised confusion matrix.jpeg)
+![Classification Report](Normalised_confusion_matrix.jpeg)
 
 ![Sample output picture](3surprised.jpg_out.png)
 
