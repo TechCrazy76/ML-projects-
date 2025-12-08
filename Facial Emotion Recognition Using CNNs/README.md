@@ -103,7 +103,7 @@ python predict_cam_video_keras.py --model data/Gudi_model_100_epochs_20000_faces
 │  └─ Gudi_model_100_epochs_20000_faces_keras.h5
 │
 └─ README.md
-
+```
 ---
 
 ## 🧩 Requirements
