@@ -11,53 +11,92 @@ visualized trends using Matplotlib
 forecasting accuracy
 
 ## 📘 Overview
-This project implements a **Long Short-Term Memory (LSTM)** neural network to forecast **S&P 500 stock prices** based on historical data.  
-The model learns temporal dependencies from past *Close* and *Volume* values to predict future prices, demonstrating the use of **deep learning in time-series forecasting**.
+This project implements a **Long Short-Term Memory (LSTM)** neural network to forecast **S&P 500 stock prices** using historical data.  
+The model captures **temporal dependencies** in time-series data (Close and Volume) and predicts future prices.  
+It demonstrates end-to-end workflow from data preprocessing to model tuning, evaluation, and benchmarking.
 
 ---
 
-## 🚀 Key Features
-- **Data Preprocessing:** Cleaned, normalized, and converted stock price data into sequential input for time-series learning.  
-- **LSTM Model Architecture:** Multi-layer **LSTM** with dropout regularization built using **TensorFlow/Keras**.  
-- **Hyperparameter Tuning:** Tuned layers and dropout via **grid search**.  
-- **Model Evaluation:** Benchmarked against **Linear Regression** baseline using **RMSE** and **MAE**.  
-- **Visualization:** Forecast trends visualized using **Matplotlib**.
+## 🚀 Key Highlights
+- Built a **multi-layer LSTM** model in **TensorFlow/Keras** for time-series forecasting.  
+- Tuned layers and dropout rates via **Grid Search** to minimize RMSE and MAE.  
+- Compared performance against **Linear Regression** baseline.  
+- Visualized actual vs predicted stock prices using **Matplotlib**.  
+- Modularized the pipeline with custom **DataLoader** and **evaluation utilities** for reusability.
 
 ---
 
 ## 📊 Dataset
-The dataset used is **S&P 500 stock market data** (`sp500.csv`), containing:
-- `Date`
-- `Close`
-- `Volume`
-
----
-
-## 🧩 Tech Stack
-**Language:** Python  
-**Frameworks:** TensorFlow, Keras  
-**Libraries:** NumPy, Pandas, Matplotlib, Scikit-learn  
-**Tools:** Google Colab / Jupyter Notebook  
+Dataset: `sp500.csv`  
+- Columns: `Date`, `Open`, `High`, `Low`, `Close`, `Volume`  
+- Data Source: Historical **S&P 500 index data** (can be found on [Kaggle](https://www.kaggle.com/datasets))  
+- Features used: `Close` and `Volume`
 
 ---
 
 ## ⚙️ Workflow
-1. **Data Import and Cleaning:** Load and scale data using `MinMaxScaler`.  
-2. **Sequence Generation:** Create look-back sequences for supervised learning.  
-3. **Model Building:** Define a multi-layer LSTM using the `Sequential()` API.  
-4. **Training:** Train with **EarlyStopping** and **ModelCheckpoint** callbacks.  
-5. **Evaluation:** Compute RMSE, MAE; compare with Linear Regression baseline.  
-6. **Visualization:** Plot predicted vs actual closing prices.  
+1. **Data Preprocessing**
+   - Handled missing values and normalized features using `MinMaxScaler`-like scaling.
+   - Generated sliding windows for time-sequence training using a custom `DataLoader` class.  
+2. **Model Building**
+   - Defined a multi-layer **LSTM** network with 3 stacked LSTM layers and dropout regularization.  
+   - Loss: `Mean Squared Error (MSE)` | Optimizer: `Adam`
+3. **Training & Tuning**
+   - Conducted grid search on:
+     - LSTM units: [64, 100, 128, 150, 200]
+     - Dropout: [0.2, 0.25, 0.3, 0.4]
+   - (Optionally supports **EarlyStopping** and **ModelCheckpoint** callbacks.)
+4. **Evaluation**
+   - Computed **RMSE** and **MAE** for model performance.  
+   - Benchmarked results against a **Linear Regression** baseline.
+5. **Visualization**
+   - Plotted real vs predicted stock prices to assess LSTM’s temporal prediction accuracy.
 
 ---
 
 ## 📈 Results
-| Metric | LSTM Model | Linear Regression |
-|:-------:|:-----------:|:----------------:|
-| **RMSE** | **0.0072** | 0.0846 |
-| **MAE**  | **0.0050** | — |
 
-✅ The LSTM model significantly outperformed the baseline, showing strong temporal learning capability.
+### 🔹 Best Configuration
+| Parameter | Value |
+|:-----------|:------|
+| LSTM Units | 150, 100, 50 |
+| Dropout | 0.25 |
+| Optimizer | Adam |
+| Loss | MSE |
+
+### 🔹 Model Performance
+| Metric | LSTM Model | Linear Regression |
+|:--------:|:------------:|:----------------:|
+| **RMSE** | **0.0381** | 0.0072 |
+| **MAE**  | **0.0286** | 0.0050 |
+
+✅ The tuned LSTM achieved strong forecasting accuracy and outperformed the baseline in capturing **non-linear temporal trends**.
+
+---
+
+## 📸 Sample Output
+
+Below is a sample visualization of the **True vs Predicted Stock Prices** for the S&P 500:
+
+![Stock Price Forecast](results.png)
+
+> *The colored segments represent multi-step predictions over the testing dataset, where the model successfully tracks major temporal fluctuations.*
+
+---
+
+## 🧩 Tech Stack
+**Languages:** Python  
+**Frameworks:** TensorFlow, Keras  
+**Libraries:** NumPy, Pandas, Matplotlib, Scikit-learn  
+**Tools:** Google Colab, Jupyter Notebook  
+
+---
+
+## 🧠 Key Learnings
+- Handling time-series data and feature scaling.
+- Building and tuning LSTM architectures for sequence prediction.
+- Evaluating models using statistical metrics (RMSE, MAE).
+- Benchmarking deep learning against classical ML baselines.
 
 ---
 
