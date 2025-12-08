@@ -5,7 +5,6 @@ from constants import *
 from os.path import isfile
 from PIL import Image, ImageFont, ImageDraw
 
-# Load face cascade (uses your existing haarcascades folder)
 face_cascade = cv2.CascadeClassifier(CASC_PATH)
 
 def crop_and_preprocess(frame, face):
