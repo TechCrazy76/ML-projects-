@@ -55,7 +55,7 @@ Includes preprocessing (face alignment), CNN training on the **FER-2013 dataset*
 ```bash
 python predict_cam_video_keras.py --model data/Gudi_model_100_epochs_20000_faces_keras.h5
 ```
-◦ **Colab**: Fully reproducible pipeline with setup cells for preprocessing, training, and evaluation
+◦ **Colab**: Fully reproducible pipeline with setup cells for preprocessing, training, and evaluation.
 
 ---
 
@@ -78,7 +78,7 @@ python predict_cam_video_keras.py --model data/Gudi_model_100_epochs_20000_faces
 | 😢 **Sad / Disgusted** | Lower recall | Often confused with *neutral* |
 | 😐 **Neutral / Angry** | Moderate | Some overlap |
 
---
+---
 
 ## 📁 Repository Structure
 
@@ -104,7 +104,7 @@ python predict_cam_video_keras.py --model data/Gudi_model_100_epochs_20000_faces
 │
 └─ README.md
 
---
+---
 
 ## 🧩 Requirements
 
@@ -117,11 +117,11 @@ python predict_cam_video_keras.py --model data/Gudi_model_100_epochs_20000_faces
 
 ```bash
 pip install -r requirements.txt
-
+```
 # or *individually*
 pip install numpy pandas opencv-python-headless pillow scikit-learn tensorflow keras h5py matplotlib seaborn
 
---
+---
 
 ## 🚀 Quick Start
 
@@ -132,8 +132,8 @@ pip install numpy pandas opencv-python-headless pillow scikit-learn tensorflow k
 
 2. **Run setup cell:**
 ```bash
-!pip install -q numpy pandas opencv-python-headless pillow scikit-learn tensorflow keras h5py matplotlib seaborn
-
+!pip install -q numpy pandas opencv-python-headless pillow scikit-learn tensorflow keras h5py tflearn
+```
 3. **Upload assets** (data.zip, haarcascades.zip, pics.zip) in Colab Files.
 
 4. **Run all preprocessing → training → evaluation cells in order.**
@@ -141,8 +141,8 @@ pip install numpy pandas opencv-python-headless pillow scikit-learn tensorflow k
 Example:
 ```bash
 !python predict_keras.py --image pics/1happy.jpg
-
---
+```
+---
 
 ## 💻 Local (Windows / Linux / macOS)
 ```bash
@@ -153,8 +153,76 @@ python -m venv venv
 venv\Scripts\activate       # Windows
 source venv/bin/activate    # macOS/Linux
 pip install -r requirements.txt
+```
+Place **fer2013.csv** inside **data/**, then run:
+```bash
+python data_process.py
+python train_keras.py
+python predict_keras.py --image pics/1happy.jpg
+python predict_cam_video_keras.py --model data/Gudi_model_100_epochs_20000_faces_keras.h5
+```
+Press q to quit webcam window.
 
+---
 
+## ✨ Usage Examples
+
+### Single Image Prediction
+```bash
+python predict_keras.py --image pics/1happy.jpg --model data/Gudi_model_100_epochs_20000_faces_keras.h5
+```
+
+### Live Webcam (Local Only)
+```bash
+python predict_cam_video_keras.py --model data/Gudi_model_100_epochs_20000_faces_keras.h5
+```
+
+---
+
+## 📈 Evaluation Summary & Insights
+
+1. Model achieves **≈66–67% test accuracy** on FER-2013.
+2. **Happy** and **Surprised** detected most reliably.
+3. **Sad**, **Disgusted**, and **Neutral** show frequent confusion (common in FER datasets).
+4. Overall performance aligns with baseline FER benchmarks for compact CNNs.
+
+---
+
+## ✅ Suggested Improvements
+
+1. **Data Augmentation:** Random flips, rotations, brightness changes.
+2. **Class Balancing:** Use weighted loss or focal loss.
+3. **Better Face Alignment:** Try dlib or MTCNN for landmark-based preprocessing.
+4. **Stronger Models:** Experiment with ResNet, MobileNet, or transfer learning.
+5. **Model Ensembling:** Combine CNNs with different seeds or architectures.
+6. **Dataset Expansion:** Merge with RAF or other FER datasets.
+
+---
+
+## ❗ Licensing & Data Note
+
+1. FER-2013 dataset must be **downloaded from Kaggle** due to licensing.
+2. Place **fer2013.csv** inside **/data** before preprocessing.
+3. Pretrained model and .npy datasets are provided for demo purposes only.
+
+---
+
+## 🔗 External Assets
+
+1. FER-2013: [Kaggle](https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data)
+2. Google Drive link for model and .npy datasets: [drive](https://drive.google.com/drive/folders/1GK-uREganN9yG59kESzYwpuCFM64HE1h?usp=drive_link)
+
+---
+
+## 📸 Sample Output
+
+![Confusion Matrix](Confusion matrix.jpeg)
+
+![Classification Report](Normalised confusion matrix.jpeg)
+
+![Sample output picture](3surprised.jpg_out.png)
+
+---
 
 
 
