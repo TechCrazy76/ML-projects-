@@ -1,6 +1,3 @@
-# predict_keras.py
-# Minimal, robust single-image predictor that uses the saved Keras model.
-
 import argparse
 import cv2
 import numpy as np
