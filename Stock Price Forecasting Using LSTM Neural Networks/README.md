@@ -78,7 +78,7 @@ Dataset: `sp500.csv`
 
 Below is a sample visualization of the **True vs Predicted Stock Prices** for the S&P 500:
 
-![Stock Price Forecast](results.png)
+![Stock Price Forecast](results.jpeg)
 
 > *The colored segments represent multi-step predictions over the testing dataset, where the model successfully tracks major temporal fluctuations.*
 
