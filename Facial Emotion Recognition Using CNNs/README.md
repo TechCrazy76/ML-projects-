@@ -8,3 +8,163 @@ using OpenCV, achieving 66% accuracy with full evaluation via precision recall, 
 
 ◦ Deployed a real-time emotion detection system using Haar cascades, enabling live webcam inference across
 7 emotions with probability overlays
+
+---
+
+## 🔍 Overview
+
+A compact, end-to-end pipeline for **Facial Emotion Recognition** built with TensorFlow 2 / Keras and OpenCV.  
+Includes preprocessing (face alignment), CNN training on the **FER-2013 dataset**, model evaluation, and a real-time webcam demo using Haar cascades for face detection.
+
+---
+
+## 🧠 Key Achievements
+- Trained a **CNN on FER-2013** (preprocessed & face-aligned) achieving **~66–67% test accuracy**.  
+- Generated detailed **classification reports, confusion matrices, and per-class metrics**.  
+- Implemented a **real-time webcam demo** using Haar cascades + probability overlays for 7 emotions:  
+  `angry, disgusted, fearful, happy, sad, surprised, neutral`.  
+- Saved model (`.h5`) and processed datasets (`.npy`) for reproducibility.  
+
+---
+
+## 🔍 Project Overview
+
+### **Preprocessing**
+- Input: `fer2013.csv` (from Kaggle).  
+- Converted pixel strings to images, detected faces with **OpenCV Haar cascades**, cropped/resized to `48×48`, and normalized `[0,1]`.  
+- Saved processed datasets: data/sf=1.1_data_images.npy, data/sf=1.1_data_labels.npy
+
+### **Training**
+- CNN architecture: `Conv2D → MaxPool → Conv2D → Dropout → Dense`.  
+- Loss: **MSE**, Optimizer: **Adam**.  
+- Utilities: `ReduceLROnPlateau`, `EarlyStopping`, `ModelCheckpoint`.  
+- Example model: `Gudi_model_100_epochs_20000_faces_keras.h5`.
+
+### **Evaluation**
+- Computed **Precision, Recall, F1-score** per class.  
+- Generated **Confusion Matrix & Normalized Confusion Matrix** visualizations.  
+- Saved performance plots and reports.
+
+### **Inference**
+- `predict_keras.py` – single image inference (with bounding boxes & probabilities).  
+- `predict_cam_video_keras.py` – **live webcam demo** (local mode).  
+- `predict_mtcnn.py` – alternative detector (optional).
+
+### **Deployment**
+- **Local:** Run webcam demo via:
+```bash
+python predict_cam_video_keras.py --model data/Gudi_model_100_epochs_20000_faces_keras.h5
+
+◦ **Colab**: Fully reproducible pipeline with setup cells for preprocessing, training, and evaluation
+
+--
+
+## 🔢 Final Quantitative Results
+
+| **Metric** | **Value** |
+|:------------|:----------|
+| **Test Accuracy (FER-2013 processed)** | **~66–67%** |
+| **Macro Avg F1** | ~0.62–0.65 |
+| **Weighted Avg F1** | ~0.66–0.67 |
+
+---
+
+### 🎯 Per-Class Performance Highlights
+
+| **Emotion** | **F1-Score** | **Notes** |
+|:-------------|:-------------|:-----------|
+| 😄 **Happy** | 0.84–0.86 | Strong performance |
+| 😲 **Surprised** | 0.76–0.80 | Good accuracy |
+| 😢 **Sad / Disgusted** | Lower recall | Often confused with *neutral* |
+| 😐 **Neutral / Angry** | Moderate | Some overlap |
+
+--
+
+## 📁 Repository Structure
+
+```powershell
+.
+├─ constants.py
+├─ data_process.py
+├─ dataset_loader.py
+├─ train_keras.py
+├─ predict_keras.py
+├─ predict_cam_video_keras.py
+├─ predict_mtcnn.py
+│
+├─ pics/                # Example input images
+├─ haarcascades/        # Haar cascade XMLs
+├─ emojis/              # Optional overlay icons
+│
+├─ data/
+│  ├─ fer2013.csv       # Kaggle download
+│  ├─ sf=1.1_data_images.npy
+│  ├─ sf=1.1_data_labels.npy
+│  └─ Gudi_model_100_epochs_20000_faces_keras.h5
+│
+└─ README.md
+
+--
+
+## 🧩 Requirements
+
+- **Python 3.8+**
+- **TensorFlow 2.x / Keras**
+- **OpenCV**
+- **NumPy**, **Pandas**, **Pillow**, **Scikit-learn**, **Matplotlib**, **Seaborn**
+
+### Install:
+
+```bash
+pip install -r requirements.txt
+
+# or *individually*
+pip install numpy pandas opencv-python-headless pillow scikit-learn tensorflow keras h5py matplotlib seaborn
+
+--
+
+## 🚀 Quick Start
+
+### 🧠 Google Colab (Recommended for GPU)
+
+1. **Change runtime to GPU (T4)**  
+   - Navigate to: `Runtime → Change runtime type → Hardware accelerator → GPU`.
+
+2. **Run setup cell:**
+```bash
+!pip install -q numpy pandas opencv-python-headless pillow scikit-learn tensorflow keras h5py matplotlib seaborn
+
+3. **Upload assets** (data.zip, haarcascades.zip, pics.zip) in Colab Files.
+
+4. **Run all preprocessing → training → evaluation cells in order.**
+
+Example:
+```bash
+!python predict_keras.py --image pics/1happy.jpg
+
+--
+
+## 💻 Local (Windows / Linux / macOS)
+```bash
+git clone <repo_url>
+cd <repo_name>
+python -m venv venv
+# Activate venv
+venv\Scripts\activate       # Windows
+source venv/bin/activate    # macOS/Linux
+pip install -r requirements.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
