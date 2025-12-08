@@ -63,6 +63,5 @@ history = model.fit(
     callbacks=cb_list
 )
 
-# save (ModelCheckpoint already saves best; this ensures file exists)
 model.save(save_path)
 print("[+] Model saved to:", save_path)
