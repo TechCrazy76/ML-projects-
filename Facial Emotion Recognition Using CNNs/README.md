@@ -215,11 +215,11 @@ python predict_cam_video_keras.py --model data/Gudi_model_100_epochs_20000_faces
 
 ## 📸 Sample Output
 
+![Classification Report](Classification_report.jpeg)
+
 ![Confusion Matrix](Confusion_matrix.jpeg)
 
-![Classification Report](Normalised_confusion_matrix.jpeg)
-
-![Sample output picture](3surprised.jpg_out.png)
+![Normalised Confusion Matrix](Normalised_confusion_matrix.jpeg)
 
 ---
 
