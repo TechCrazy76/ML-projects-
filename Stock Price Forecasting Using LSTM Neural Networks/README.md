@@ -1,14 +1,16 @@
 # Stock Price Forecasting Using LSTM Neural Networks | Machine Learning |
-[Apr 2025 - Jun 2025]
+**[Apr 2025 - Jun 2025]**
 
-(Self Project)
+**(Self Project)**
 
-◦ Built a multi-layer LSTM in TensorFlow/Keras to predict S&P 500 using scaled Close and Volume with
-temporal features; tuned layers and dropout via grid search, reducing RMSE from 0.0846 to 0.0381 and
-visualized trends using Matplotlib
+◦ Built a **multi-layer LSTM** in **TensorFlow/Keras** to predict **S&P 500** using scaled *Close* and *Volume* with
+**temporal** features; **tuned** layers and dropout via **grid search**, reducing **RMSE** from **0.0846** to **0.0381** and
+visualized trends using **Matplotlib**
 
-◦ Benchmarked against linear regression baseline (RMSE: 0.0072 and MAE: 0.0050) in order to assess
+◦ Benchmarked against **linear regression** baseline (**RMSE: 0.0072** and **MAE: 0.0050**) in order to assess
 forecasting accuracy
+
+---
 
 ## 📘 Overview
 This project implements a **Long Short-Term Memory (LSTM)** neural network to forecast **S&P 500 stock prices** using historical data.  
