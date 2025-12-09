@@ -1,5 +1,5 @@
 # Fake News Detection Using TF-IDF and Logistic Regression | Natural Language Processing |
-**Mar 2025**
+**[Jan 2025 - Feb 2025]**
 
 **(Self project)**
 
